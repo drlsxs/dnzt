@@ -1,49 +1,80 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{title}}</text>
-		</view>
+	<view>
+    <view class="home-tab">
+      <view class="home-tab__title">
+        <view class="title__inner">
+          <uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" styleType="text" activeColor="#3D8CF1"></uni-segmented-control>
+        </view>
+        <view class="iconfont icon-search"></view>
+      </view>
+      <view class="home-tab__content">
+        <view v-show="current === 0">
+          <index-recommend></index-recommend>
+        </view>
+        <view v-show="current === 1">
+          <index-category></index-category>
+        </view>
+        <view v-show="current === 2">
+          <index-news></index-news>
+        </view>
+        <view v-show="current === 3">
+          <index-album></index-album>
+
+        </view>
+      </view>
+    </view>
 	</view>
 </template>
 
 <script>
-	export default {
+import indexAlbum from "./index-album";
+import indexCategory from "./index-category";
+import indexNews from "./index-news";
+import indexRecommend from "./index-recommend";
+import  { uniSegmentedControl }  from  '@dcloudio/uni-ui'
+import request from "../../utils/request";
+export default {
+    components: {
+      indexAlbum,
+      indexCategory,
+      indexNews,
+      indexRecommend,
+      uniSegmentedControl
+    },
 		data() {
 			return {
-				title: 'Hello'
+        items: ["推荐", "专辑", "分类", "最新"],
+        current: 0
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
+      onClickItem(e) {
+        if (this.current !== e.currentIndex) {
+          this.current = e.currentIndex;
+        }
+      }
 
 		}
 	}
 </script>
 
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+<style lang="scss" scoped>
+.home-tab {
+  .home-tab__title {
+    position: relative;
+    .title__inner {
+      width: 60%;
+      margin: 0 auto;
+    }
+    .icon-search {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5%;
+    }
+  }
+}
 </style>
