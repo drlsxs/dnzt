@@ -12,6 +12,9 @@ export default {
   },
   created() {
   },
+  mounted() {
+    uni.setNavigationBarTitle({title: "分类"});
+  },
   methods: {}
 }
 </script>

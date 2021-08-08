@@ -12,6 +12,9 @@ export default {
   },
   created() {
   },
+  mounted() {
+    uni.setNavigationBarTitle({title: "最新"});
+  },
   methods: {}
 }
 </script>

@@ -75,6 +75,7 @@ export default {
     };
   },
   mounted() {
+    uni.setNavigationBarTitle({title: "推荐"});
     this.getList();
   },
   methods: {

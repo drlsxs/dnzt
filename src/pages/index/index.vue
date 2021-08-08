@@ -8,17 +8,19 @@
         <view class="iconfont icon-search"></view>
       </view>
       <view class="home-tab__content">
-        <view v-show="current === 0">
+        <view v-if="current === 0">
           <index-recommend></index-recommend>
         </view>
-        <view v-show="current === 1">
-          <index-category></index-category>
-        </view>
-        <view v-show="current === 2">
-          <index-news></index-news>
-        </view>
-        <view v-show="current === 3">
+        <view v-if="current === 1">
           <index-album></index-album>
+
+        </view>
+        <view v-if="current === 2">
+          <index-category></index-category>
+
+        </view>
+        <view v-if="current === 3">
+          <index-news></index-news>
 
         </view>
       </view>
