@@ -44,7 +44,8 @@ export default {
 		data() {
 			return {
         items: ["推荐", "专辑", "分类", "最新"],
-        current: 0
+        current: 0,
+
 			}
 		},
 		onLoad() {
@@ -55,13 +56,15 @@ export default {
         if (this.current !== e.currentIndex) {
           this.current = e.currentIndex;
         }
-      }
-
+      },
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+.container {
+  height: 100%;
+}
 .home-tab {
   .home-tab__title {
     position: relative;
